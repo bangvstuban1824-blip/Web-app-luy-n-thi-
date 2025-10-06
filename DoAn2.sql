@@ -135,29 +135,8 @@ CREATE TABLE dap_an_luot_lam (
     FOREIGN KEY (lua_chon_id) REFERENCES lua_chon_cau_hoi(id)
 );
 
-/* ================================================
-   💾 RESET TOÀN BỘ DỮ LIỆU & TẠO MỚI CSDL NGẮN GỌN
-   ================================================ */
 
--- Xóa bảng cũ (nếu có)
-DROP TABLE IF EXISTS dap_an_luot_lam;
-DROP TABLE IF EXISTS luot_lam_bai;
-DROP TABLE IF EXISTS cau_hoi_de_thi;
-DROP TABLE IF EXISTS de_thi;
-DROP TABLE IF EXISTS nhan_cau_hoi;
-DROP TABLE IF EXISTS nhan;
-DROP TABLE IF EXISTS lua_chon_cau_hoi;
-DROP TABLE IF EXISTS cau_hoi;
-DROP TABLE IF EXISTS phuong_tien;
-DROP TABLE IF EXISTS danh_muc;
-DROP TABLE IF EXISTS cai_dat_nguoi_dung;
-DROP TABLE IF EXISTS avatar;
-DROP TABLE IF EXISTS nguoi_dung;
-GO
 
-/* ==========================
-   🧍‍♂️ BẢNG NGƯỜI DÙNG
-   ========================== */
 CREATE TABLE nguoi_dung (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	ten_dang_nhap NVARCHAR(100) UNIQUE NOT NULL,
@@ -174,9 +153,7 @@ VALUES
 (N'tranvanc', N'c@example.com', N'123456');
 GO
 
-/* ==========================
-   📂 DANH MỤC
-   ========================== */
+	
 CREATE TABLE danh_muc (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	ten NVARCHAR(100),
@@ -191,9 +168,7 @@ VALUES
 (N'Lịch sử', N'Môn Lịch sử Việt Nam');
 GO
 
-/* ==========================
-   🧩 CÂU HỎI
-   ========================== */
+	
 CREATE TABLE cau_hoi (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	noi_dung NVARCHAR(MAX),
@@ -210,9 +185,7 @@ VALUES
 (N'Trong tiếng Anh, "cat" nghĩa là gì?', N'chon_mot', 2);
 GO
 
-/* ==========================
-   ✅ LỰA CHỌN CÂU HỎI
-   ========================== */
+
 CREATE TABLE lua_chon_cau_hoi (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	cau_hoi_id INT,
@@ -237,9 +210,7 @@ VALUES
 (3, N'Con cá', 0);
 GO
 
-/* ==========================
-   🧾 ĐỀ THI
-   ========================== */
+
 CREATE TABLE de_thi (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	ten NVARCHAR(100),
@@ -255,9 +226,7 @@ VALUES
 (N'Đề Anh văn số 1', N'Từ vựng cơ bản', 2);
 GO
 
-/* ==========================
-   🔗 CÂU HỎI TRONG ĐỀ THI
-   ========================== */
+
 CREATE TABLE cau_hoi_de_thi (
 	de_thi_id INT,
 	cau_hoi_id INT,
@@ -273,9 +242,7 @@ VALUES
 (2, 3);
 GO
 
-/* ==========================
-   🧮 KIỂM TRA KẾT QUẢ
-   ========================== */
+
 SELECT * FROM nguoi_dung;
 SELECT * FROM danh_muc;
 SELECT * FROM cau_hoi;
@@ -283,3 +250,4 @@ SELECT * FROM lua_chon_cau_hoi;
 SELECT * FROM de_thi;
 SELECT * FROM cau_hoi_de_thi;
 GO
+
